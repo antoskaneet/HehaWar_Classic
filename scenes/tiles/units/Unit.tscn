@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkem22jg2cit2"]
+
+[ext_resource type="Texture2D" uid="uid://ch1fi2fmbjafh" path="res://assets/testhexunit.png" id="1_fqlfb"]
+[ext_resource type="Script" uid="uid://c27pckw52uyqd" path="res://scripts/tiles/units/unit/Unit.gd" id="1_mie17"]
+[ext_resource type="Script" uid="uid://bpppd3otklih3" path="res://scripts/tiles/units/unit/UnitInput.gd" id="2_mie17"]
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_mie17")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fqlfb")
+
+[node name="InputUnit" type="Area2D" parent="."]
+script = ExtResource("2_mie17")
+
+[node name="InputZone" type="CollisionPolygon2D" parent="InputUnit"]
+polygon = PackedVector2Array(-63, 122, -125, -1, -64, -122, 62, -123, 126, 1, 62, 123)
+
+[connection signal="input_event" from="InputUnit" to="InputUnit" method="_on_hex_selected"]

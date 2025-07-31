@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cqqyoggo6cand"]
+
+[ext_resource type="PackedScene" uid="uid://bkem22jg2cit2" path="res://scenes/tiles/units/Unit.tscn" id="1_fecan"]
+[ext_resource type="PackedScene" uid="uid://0rshdb2ddrro" path="res://scenes/tiles/terrain/Grass.tscn" id="2_kabqt"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kabqt"]
+scenes/1/scene = ExtResource("1_fecan")
+scenes/2/scene = ExtResource("2_kabqt")
+
+[resource]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetScenesCollectionSource_kabqt")

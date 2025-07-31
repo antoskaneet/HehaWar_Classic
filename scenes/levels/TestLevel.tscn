@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=4 uid="uid://dpmls22dl6och"]
+
+[ext_resource type="Script" uid="uid://llxqh8wd56j1" path="res://scripts/levels/TestLevel.gd" id="1_3wv3p"]
+[ext_resource type="Texture2D" uid="uid://cj1oy67lpl325" path="res://assets/bg.png" id="1_86d4f"]
+[ext_resource type="TileSet" uid="uid://cqqyoggo6cand" path="res://assets/tileset/tile_set.tres" id="2_w20ko"]
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_3wv3p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14, 10)
+scale = Vector2(14.5417, 14.5417)
+texture = ExtResource("1_86d4f")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAQAAAAAAAAAAAAAAAQAAAP//AAAAAAAAAQD//wAAAAAAAAAAAgD+/wAAAAAAAAAAAgD+////AAAAAAAAAgD///7/AAAAAAAAAgAAAP7/AAAAAAAAAgABAP7/AAAAAAAAAgABAP//AAAAAAAAAgABAAAAAAAAAAAAAgAAAAEAAAAAAAAAAgA=")
+tile_set = ExtResource("2_w20ko")
