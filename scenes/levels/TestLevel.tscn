@@ -8,8 +8,8 @@
 script = ExtResource("1_3wv3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(14, 10)
-scale = Vector2(14.5417, 14.5417)
+position = Vector2(24.3888, 18.5)
+scale = Vector2(81.6806, 81.6805)
 texture = ExtResource("1_86d4f")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
