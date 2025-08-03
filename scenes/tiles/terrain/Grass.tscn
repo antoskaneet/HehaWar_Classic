@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://0rshdb2ddrro"]
+[gd_scene load_steps=4 format=3 uid="uid://0rshdb2ddrro"]
 
 [ext_resource type="Texture2D" uid="uid://ccgq0mom23dtt" path="res://assets/bluehex.png" id="1_geyqd"]
+[ext_resource type="Script" uid="uid://du8uvefhu3spb" path="res://scripts/tiles/terrain/Grass.gd" id="1_wjatl"]
 [ext_resource type="Script" uid="uid://cb2wfqbro73qj" path="res://scripts/tiles/terrain/GrassInput.gd" id="2_hpkp1"]
 
 [node name="Grass" type="Node2D"]
+script = ExtResource("1_wjatl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_geyqd")

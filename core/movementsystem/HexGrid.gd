@@ -15,8 +15,9 @@ func get_movement_area(hex_coord: Vector2, radius: int, tilemap_layer: TileMapLa
 			var r = r0 + dr
 			var tile_pos = Vector2i(q, r)
 
-			var tile_data = tilemap_layer.get_cell_source_id(tile_pos)
-			if tile_data != -1:
-				result.append(Vector2(q, r))
+			var tile_data = GridRegistry.get_hex(tile_pos, "grass")
+			
+			result.append(tile_data)
 
 	return result
+	

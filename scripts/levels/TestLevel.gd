@@ -4,3 +4,4 @@ extends Node
 
 func _ready() -> void:
 	UnitSelector.set_tilemaplayer(tilemap_layer)
+	GridRegistry.set_tilemaplayer(tilemap_layer)

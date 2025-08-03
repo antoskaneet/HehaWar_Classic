@@ -10,9 +10,9 @@ func register_unit(unit: Node):
 	unit.unit_selected.connect(_on_unit_selected)
 	print("Подписан на сигнал юнита: ", unit.name)
 
-func _on_unit_selected(data: UnitData, unit: Node):
+func _on_unit_selected(unit: Node):
 	print("Выбран юнит:", unit)
-	var radius = data.radius
+	var radius = unit.data.radius
 	var position = unit.get_position()
 	var coords = tilemap_layer.local_to_map(position)
 	print(hex_grid.get_movement_area(coords, radius, tilemap_layer))
