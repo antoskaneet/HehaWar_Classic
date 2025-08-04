@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UnitSelector="*res://core/autoload/UnitSelector.gd"
 GridRegistry="*res://core/autoload/GridRegistry.gd"
+PathFinder="*res://core/autoload/PathFinder.gd"
 
 [rendering]
 

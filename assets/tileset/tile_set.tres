@@ -5,7 +5,7 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kabqt"]
 scenes/1/scene = ExtResource("1_fecan")
-scenes/2/scene = ExtResource("2_kabqt")
+scenes/4/scene = ExtResource("2_kabqt")
 
 [resource]
 tile_shape = 3

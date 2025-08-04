@@ -2,7 +2,7 @@ extends RefCounted
 
 class_name HexGrid
 	
-func get_movement_area(hex_coord: Vector2, radius: int, tilemap_layer: TileMapLayer) -> Array:
+func get_movement_area(hex_coord: Vector2, radius: int) -> Array:
 	var result = []
 	var q0 = int(hex_coord.x)
 	var r0 = int(hex_coord.y)
@@ -15,9 +15,11 @@ func get_movement_area(hex_coord: Vector2, radius: int, tilemap_layer: TileMapLa
 			var r = r0 + dr
 			var tile_pos = Vector2i(q, r)
 
-			var tile_data = GridRegistry.get_hex(tile_pos, "grass")
-			
-			result.append(tile_data)
+			var has_grass = GridRegistry.get_hex(tile_pos, "grass")
+			var has_unit = GridRegistry.get_hex(tile_pos, "unit")
+
+			if has_grass and not has_unit:
+				result.append(has_grass)
 
 	return result
 	

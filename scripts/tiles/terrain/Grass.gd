@@ -4,4 +4,4 @@ extends Node
 
 func _ready() -> void:
 	add_to_group("grass")
-	GridRegistry.registry(grass, grass.position)
+	GridRegistry.registry(grass, grass.global_position)

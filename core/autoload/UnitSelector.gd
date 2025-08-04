@@ -1,18 +1,15 @@
 extends Node
 
 var hex_grid = HexGrid.new()
-var tilemap_layer: TileMapLayer
 
-func set_tilemaplayer(tilemaplayer):
-	tilemap_layer = tilemaplayer
-	
 func register_unit(unit: Node):
 	unit.unit_selected.connect(_on_unit_selected)
 	print("Подписан на сигнал юнита: ", unit.name)
 
 func _on_unit_selected(unit: Node):
 	print("Выбран юнит:", unit)
-	var radius = unit.data.radius
-	var position = unit.get_position()
-	var coords = tilemap_layer.local_to_map(position)
-	print(hex_grid.get_movement_area(coords, radius, tilemap_layer))
+	var mouse_pos_global = get_viewport().get_mouse_position()
+	PathFinder.set_seleted_unit(unit)
+	print("abobusi: tyt ", PathFinder.get_movement_area())
+	#print("весь массив: ", GridRegistry.hexs)
+	
