@@ -8,8 +8,7 @@ func register_unit(unit: Node):
 
 func _on_unit_selected(unit: Node):
 	print("Выбран юнит:", unit)
-	var mouse_pos_global = get_viewport().get_mouse_position()
 	PathFinder.set_seleted_unit(unit)
-	print("abobusi: tyt ", PathFinder.get_movement_area())
+	PathFinder.get_reachable_tiles(unit)
 	#print("весь массив: ", GridRegistry.hexs)
 	

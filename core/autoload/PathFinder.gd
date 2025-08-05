@@ -9,53 +9,53 @@ func set_tilemaplayer(tilemaplayer: TileMapLayer):
 func set_seleted_unit(unit: Node):
 	_unit = unit
 
-func get_movement_area() -> Array:
-	var unit_pos = _unit.position
-	var unit_pos_map = _tilemaplayer.local_to_map(unit_pos)
-	var radius = _unit.data.radius
-	
-	var result = []
-	var q0 = int(unit_pos_map.x)
-	var r0 = int(unit_pos_map.y)
-	
-	# Добавляем центральную клетку
-	var tile_pos = Vector2i(q0, r0)
-	var has_grass = GridRegistry.get_hex(tile_pos, "grass")
-	var has_unit = GridRegistry.get_hex(tile_pos, "unit")
-	if has_grass and !has_unit:
-		result.append(has_grass)
-	
-	# Итерация по слоям от 1 до radius
-	for dist in range(1, radius + 1):
-		# Смещения для соседей в порядке: верх, правый-верх, правый-низ, низ, левый-низ, левый-верх
-		var directions = []
-		if (q0 + dist) % 2 == 0:  # Чётный столбец
-			directions = [
-				Vector2i(0, -dist),        # верх
-				Vector2i(1, 0 - dist + 1), # правый-верх
-				Vector2i(1, dist),         # правый-низ
-				Vector2i(0, dist),         # низ
-				Vector2i(-1, dist),        # левый-низ
-				Vector2i(-1, 0 - dist + 1) # левый-верх
-			]
-		else:  # Нечётный столбец
-			directions = [
-				Vector2i(0, -dist),        # верх
-				Vector2i(1, -dist),        # правый-верх
-				Vector2i(1, dist - 1),     # правый-низ
-				Vector2i(0, dist),         # низ
-				Vector2i(-1, dist - 1),    # левый-низ
-				Vector2i(-1, -dist)        # левый-верх
-			]
-		
-		# Добавляем клетки текущего слоя
-		for dir in directions:
-			var q = q0 + dir.x
-			var r = r0 + dir.y
-			tile_pos = Vector2i(q, r)
-			has_grass = GridRegistry.get_hex(tile_pos, "grass")
-			has_unit = GridRegistry.get_hex(tile_pos, "unit")
-			if has_grass and !has_unit:
-				result.append(has_grass)
-	
-	return result
+func is_walkable(pos: Vector2i) -> bool:
+	var unit = GridRegistry.get_hex(pos, "unit")
+	print(unit)
+	return !unit
+
+func get_neighbors(pos: Vector2i) -> Array:
+	var neighbors = []
+	var parity = pos.x % 2
+
+	var dy = -1 if parity == 0 else +1
+	var directions = [
+		Vector2i(+1, 0), Vector2i(-1, 0),
+		Vector2i(0, -1), Vector2i(0, +1),
+		Vector2i(+1, dy), Vector2i(-1, dy)
+	]
+
+	for dir in directions:
+		neighbors.append(pos + dir)
+
+	return neighbors
+
+func get_reachable_tiles(unit: Node) -> Dictionary:
+	var start = _tilemaplayer.local_to_map(_unit.position)
+	var max_steps = _unit.data.radius
+	var visited := { start: 0 }
+	var frontier := [ { "pos": start, "cost": 0 } ]
+
+	while frontier.size() > 0:
+		var current = frontier.pop_front()
+		var pos = current["pos"]
+		var cost = current["cost"]
+
+		if cost >= max_steps:
+			continue
+
+		for neighbor in get_neighbors(pos):
+			if !is_walkable(neighbor):
+				continue
+
+			if visited.has(neighbor) and visited[neighbor] <= cost + 1:
+				continue
+
+			visited[neighbor] = cost + 1
+			frontier.append({ "pos": neighbor, "cost": cost + 1 })
+
+			var mega = GridRegistry.get_hex(neighbor, "grass")
+			if mega:
+				mega.bob()
+
+	return visited

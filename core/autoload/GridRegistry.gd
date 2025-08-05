@@ -23,11 +23,12 @@ func unregister(node: Node, coords: Vector2i) -> void:
 				hexs.erase(coords)
 
 func get_hex(coords: Vector2i, group_name: String) -> Node:
-	if hexs.has(coords):
-		for node in hexs[coords]:
-			if node.is_in_group(group_name):
-				return node
-	return null
+		if hexs.has(coords):
+			for node in hexs[coords]:
+				if node:
+					if node.is_in_group(group_name):
+						return node
+		return null
 
 # НЕЭФФЕКТИВЕН: перебирает все ключи и значения словаря,
 # что при большом количестве данных занимает много времени.
