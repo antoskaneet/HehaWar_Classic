@@ -2,6 +2,7 @@ extends Node
 
 var _tilemaplayer
 var _unit
+var movement_area_mass = []
 
 func set_tilemaplayer(tilemaplayer: TileMapLayer):
 	_tilemaplayer = tilemaplayer
@@ -30,7 +31,8 @@ func get_neighbors(pos: Vector2i) -> Array:
 
 	return neighbors
 
-func get_reachable_tiles(unit: Node) -> Dictionary:
+func get_movement_area(unit: Node) -> Array:
+	movement_area_mass.clear()
 	var start = _tilemaplayer.local_to_map(_unit.position)
 	var max_steps = _unit.data.radius
 	var visited := { start: 0 }
@@ -54,8 +56,11 @@ func get_reachable_tiles(unit: Node) -> Dictionary:
 			visited[neighbor] = cost + 1
 			frontier.append({ "pos": neighbor, "cost": cost + 1 })
 
-			var mega = GridRegistry.get_hex(neighbor, "grass")
-			if mega:
-				mega.bob()
+			var movement_area_cell = GridRegistry.get_hex(neighbor, "grass")
+			movement_area_mass.append(movement_area_cell)
+			
+	return movement_area_mass
 
-	return visited
+func get_path_move(grass: Node):
+	#в процессе
+	return

@@ -7,13 +7,14 @@
 [node name="Grass" type="Node2D"]
 script = ExtResource("1_wjatl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="GrassTexture" type="Sprite2D" parent="."]
 texture = ExtResource("1_geyqd")
 
 [node name="GrassInput" type="Area2D" parent="."]
+visible = false
 script = ExtResource("2_hpkp1")
 
 [node name="GrassZone" type="CollisionPolygon2D" parent="GrassInput"]
 polygon = PackedVector2Array(-62, 125, -126, 1, -64, -122, 62, -123, 125, 0, 64, 123)
 
-[node name="Node" type="Node" parent="."]
+[connection signal="input_event" from="GrassInput" to="GrassInput" method="_on_input_event"]

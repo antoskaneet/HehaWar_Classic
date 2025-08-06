@@ -4,10 +4,10 @@ extends Node
 @onready var unit = self
 
 signal unit_selected(unit: Node)
+
 var data = UnitData.new()
 
 func _ready():
-	print("hex_loaded")
 	add_to_group("unit")
 	GridRegistry.registry(unit, unit.global_position)
 	inputunit.unit_selected.connect(_on_hex_unit_selected)
