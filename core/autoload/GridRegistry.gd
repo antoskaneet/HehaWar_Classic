@@ -15,12 +15,13 @@ func registry(node: Node, coords: Vector2i):
 		print("Регистрируем:", node, "в координаты:", _local_coords)
 		hexs[_local_coords].append(node)
 
-func unregister(node: Node, coords: Vector2i) -> void:
-	if hexs.has(coords):
-		if node in hexs[coords]:
-			hexs[coords].erase(node)
-			if hexs[coords].is_empty():
-				hexs.erase(coords)
+func unregistry(node: Node, coords: Vector2i) -> void:
+	var _local_coords = tilemap_layer.local_to_map(coords)
+	if hexs.has(_local_coords):
+		if node in hexs[_local_coords]:
+			hexs[_local_coords].erase(node)
+			if hexs[_local_coords].is_empty():
+				hexs.erase(_local_coords)
 
 func get_hex(coords: Vector2i, group_name: String) -> Node:
 		if hexs.has(coords):

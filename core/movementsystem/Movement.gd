@@ -1,7 +1,6 @@
 extends RefCounted
 
-# ето типо Movement, лень менять названия
-class_name HexGrid
+class_name Movement
 	
 func set_movement_area(grass_mass: Array):
 	for grass in grass_mass:
@@ -13,5 +12,7 @@ func remove_movement_area(grass_mass: Array):
 		
 func move(_unit, grass, grass_mass):
 	var finish = grass.position
-	_unit.position = finish
+	GridRegistry.unregistry(_unit, _unit.position)
 	remove_movement_area(grass_mass)
+	GridRegistry.registry(_unit, finish)
+	_unit.position = finish

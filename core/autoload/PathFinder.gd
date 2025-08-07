@@ -11,8 +11,11 @@ func set_seleted_unit(unit: Node):
 	_unit = unit
 
 func is_walkable(pos: Vector2i) -> bool:
+	var source_id = _tilemaplayer.get_cell_source_id(pos)
+	if source_id == -1:
+		return false
 	var unit = GridRegistry.get_hex(pos, "unit")
-	print(unit)
+	# print(unit)
 	return !unit
 
 func get_neighbors(pos: Vector2i) -> Array:
@@ -31,7 +34,7 @@ func get_neighbors(pos: Vector2i) -> Array:
 
 	return neighbors
 
-func get_movement_area(unit: Node) -> Array:
+func get_movement_area() -> Array:
 	movement_area_mass.clear()
 	var start = _tilemaplayer.local_to_map(_unit.position)
 	var max_steps = _unit.data.radius
