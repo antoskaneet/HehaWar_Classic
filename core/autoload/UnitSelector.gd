@@ -1,7 +1,9 @@
 extends Node
 
 var movement = Movement.new()
-var grass_mass: Array
+var attack = Attack.new()
+var movement_area: Array
+var attack_area: Array
 var current_unit: Node
 
 func register_unit(unit: Node):
@@ -13,10 +15,15 @@ func register_grass(grass: Node):
 func _on_unit_selected(unit: Node):
 	print("Выбран юнит:", unit)
 	PathFinder.set_seleted_unit(unit)
-	movement.remove_movement_area(grass_mass)
-	grass_mass = PathFinder.get_movement_area()
-	movement.set_movement_area(grass_mass)
+	attack.remove_attack_area()
+	movement.remove_movement_area(movement_area)
+	movement_area = PathFinder.get_movement_area()
+	attack_area = PathFinder.get_attack_area()
+	movement.set_movement_area(movement_area)
 	current_unit = unit
 	
 func _on_hex_grass_selected(grass: Node):
-	movement.move(current_unit, grass, grass_mass)
+	movement.move(current_unit, grass, movement_area)
+	
+func _on_unit_attacked():
+	

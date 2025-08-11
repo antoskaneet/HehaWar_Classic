@@ -18,3 +18,4 @@ func move_along_path(path: Array, duration_per_cell := 0.3):
 
 func _on_tween_finished():
 	get_parent().get_node("InputUnit").visible = true
+	get_parent().get_node("UnitHP").take_damage(1)

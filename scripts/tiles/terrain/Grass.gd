@@ -5,7 +5,6 @@ extends Node
 
 signal grass_selected(grass: Node)
 
-
 func _ready() -> void:
 	add_to_group("grass")
 	GridRegistry.registry(grass, grass.global_position)
