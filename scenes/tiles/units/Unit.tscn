@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkem22jg2cit2"]
+[gd_scene load_steps=6 format=3 uid="uid://bkem22jg2cit2"]
 
 [ext_resource type="Texture2D" uid="uid://ch1fi2fmbjafh" path="res://assets/testhexunit.png" id="1_fqlfb"]
 [ext_resource type="Script" uid="uid://c27pckw52uyqd" path="res://scripts/tiles/units/unit/Unit.gd" id="1_mie17"]
 [ext_resource type="Script" uid="uid://bpppd3otklih3" path="res://scripts/tiles/units/unit/UnitInput.gd" id="2_mie17"]
+[ext_resource type="Script" uid="uid://btlw16o5wius3" path="res://scripts/tiles/units/unit/MovementTween.gd" id="4_yrmk5"]
+
+[sub_resource type="SystemFont" id="SystemFont_yrmk5"]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_mie17")
@@ -15,5 +18,17 @@ script = ExtResource("2_mie17")
 
 [node name="InputZone" type="CollisionPolygon2D" parent="InputUnit"]
 polygon = PackedVector2Array(-63, 122, -125, -1, -64, -122, 62, -123, 126, 1, 62, 123)
+
+[node name="MovementTween" type="Node" parent="."]
+script = ExtResource("4_yrmk5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -51.0
+offset_top = -62.0
+offset_right = 52.0
+offset_bottom = 62.0
+theme_override_fonts/font = SubResource("SystemFont_yrmk5")
+theme_override_font_sizes/font_size = 90
+text = "10"
 
 [connection signal="input_event" from="InputUnit" to="InputUnit" method="_on_hex_selected"]

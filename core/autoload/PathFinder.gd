@@ -64,6 +64,53 @@ func get_movement_area() -> Array:
 			
 	return movement_area_mass
 
-func get_path_move(grass: Node):
-	#в процессе
-	return
+func get_path_move(unit: Node, grass: Node, grass_mass: Array) -> Array:
+	var start_pos = _tilemaplayer.local_to_map(unit.position)
+	var target_pos = _tilemaplayer.local_to_map(grass.position)
+	
+	# Множество допустимых клеток (Vector2i)
+	var allowed_positions := {}
+	for cell in grass_mass:
+		var pos = _tilemaplayer.local_to_map(cell.position)
+		allowed_positions[pos] = true
+	
+	# BFS
+	var queue := [start_pos]
+	var came_from := {}
+	came_from[start_pos] = null
+	
+	while queue.size() > 0:
+		var current = queue.pop_front()
+		
+		if current == target_pos:
+			break
+		
+		for neighbor in get_neighbors(current):
+			# Можно ходить только по grass_mass или стартовой клетке
+			if !allowed_positions.has(neighbor) and neighbor != start_pos:
+				continue
+			if came_from.has(neighbor):
+				continue
+			
+			came_from[neighbor] = current
+			queue.append(neighbor)
+	
+	# Восстановление пути
+	var path := []
+	var cur = target_pos
+	while cur != null:
+		path.push_front(cur)
+		cur = came_from.get(cur, null)
+	
+	# Убираем стартовую точку, если она есть
+	if path.size() > 0 and path[0] == start_pos:
+		path.remove_at(0)
+	
+	# Переводим координаты в ноды grass
+	var path_nodes := []
+	for pos in path:
+		var grass_node = GridRegistry.get_hex(pos, "grass")
+		if grass_node:
+			path_nodes.append(grass_node)
+	
+	return path_nodes
