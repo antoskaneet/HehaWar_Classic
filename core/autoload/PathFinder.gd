@@ -34,10 +34,40 @@ func get_neighbors(pos: Vector2i) -> Array:
 
 	return neighbors
 
-func get_movement_area() -> Array:
+func get_units_in_range(max_steps: int) -> Array:
+	var found_units := []
+	var start = _tilemaplayer.local_to_map(_unit.position)
+	var visited := { start: 0 }
+	var frontier := [ { "pos": start, "cost": 0 } ]
+
+	while frontier.size() > 0:
+		var current = frontier.pop_front()
+		var pos = current["pos"]
+		var cost = current["cost"]
+
+		if cost >= max_steps:
+			continue
+
+		for neighbor in get_neighbors(pos):
+			if visited.has(neighbor) and visited[neighbor] <= cost + 1:
+				continue
+
+			visited[neighbor] = cost + 1
+			frontier.append({ "pos": neighbor, "cost": cost + 1 })
+
+			# Проверка — есть ли юнит на этой клетке (и это не стартовый)
+			if neighbor != start:
+				var unit_at_cell = GridRegistry.get_hex(neighbor, "unit")
+				if unit_at_cell != null:
+					found_units.append(unit_at_cell)
+
+	return found_units
+
+
+
+func get_unit_area(max_steps) -> Array:
 	movement_area_mass.clear()
 	var start = _tilemaplayer.local_to_map(_unit.position)
-	var max_steps = _unit.data.radius
 	var visited := { start: 0 }
 	var frontier := [ { "pos": start, "cost": 0 } ]
 

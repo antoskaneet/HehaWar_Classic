@@ -8,8 +8,6 @@ signal grass_selected(grass: Node)
 func _ready() -> void:
 	add_to_group("grass")
 	GridRegistry.registry(grass, grass.global_position)
-	grass_input.grass_selected.connect(_on_hex_grass_selected)
-	UnitSelector.register_grass(self)
 
 func activate():
 	grass_input.visible = true

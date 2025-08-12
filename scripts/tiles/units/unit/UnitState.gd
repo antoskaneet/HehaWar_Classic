@@ -1,9 +1,11 @@
 extends Node
 
-@onready var inputunit: Area2D = get_parent().get_node("InputUnit") 
+@onready var input_unit: Area2D = get_parent().get_node("InputUnit") 
 
 func activate():
-	inputunit.enable_attacked_event()
+	input_unit.enable_attacked_event()	
+	get_parent().get_node("Sprite2D").texture = preload("res://assets/blackhex.png")
 
 func un_activate():
-	inputunit.disable_attacked_event()
+	input_unit.disable_attacked_event()
+	get_parent().get_node("Sprite2D").texture = preload("res://assets/testhexunit.png")

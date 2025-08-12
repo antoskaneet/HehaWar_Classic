@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkem22jg2cit2"]
+[gd_scene load_steps=9 format=3 uid="uid://bkem22jg2cit2"]
 
 [ext_resource type="Texture2D" uid="uid://ch1fi2fmbjafh" path="res://assets/testhexunit.png" id="1_fqlfb"]
 [ext_resource type="Script" uid="uid://c27pckw52uyqd" path="res://scripts/tiles/units/unit/Unit.gd" id="1_mie17"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://btlw16o5wius3" path="res://scripts/tiles/units/unit/MovementTween.gd" id="4_yrmk5"]
 [ext_resource type="Script" uid="uid://1yqw1528n8l7" path="res://scripts/tiles/units/unit/HP.gd" id="5_8n25i"]
 [ext_resource type="Script" uid="uid://dnbghbncsu2op" path="res://scripts/tiles/units/unit/LabelHP.gd" id="5_bsjw1"]
-[ext_resource type="Script" uid="uid://b6k86qdlkjyuc" path="res://scripts/tiles/units/unit/AttackTween.gd" id="5_rdona"]
 [ext_resource type="Script" uid="uid://653rbuf0a646" path="res://scripts/tiles/units/unit/UnitState.gd" id="7_5pin8"]
 
 [sub_resource type="SystemFont" id="SystemFont_yrmk5"]
@@ -26,9 +25,6 @@ polygon = PackedVector2Array(-63, 122, -125, -1, -64, -122, 62, -123, 126, 1, 62
 
 [node name="MovementTween" type="Node" parent="."]
 script = ExtResource("4_yrmk5")
-
-[node name="AttackTween" type="Node" parent="."]
-script = ExtResource("5_rdona")
 
 [node name="UnitHP" type="Node" parent="."]
 script = ExtResource("5_8n25i")

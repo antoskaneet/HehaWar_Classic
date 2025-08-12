@@ -1,29 +1,24 @@
 extends Node
 
-var movement = Movement.new()
-var attack = Attack.new()
-var movement_area: Array
-var attack_area: Array
 var current_unit: Node
+var movement_selector = MovementSelector.new()
+var attack_selector = AttackSelector.new()
 
-func register_unit(unit: Node):
-	unit.unit_selected.connect(_on_unit_selected)
+func _ready():
+	EventBus.unit_input_selected.connect(_on_movement_unit_selected)
+	EventBus.grass_input_selected.connect(_on_movement_grass_selected)
+	EventBus.unit_attacked_selected.connect(_on_unit_attacked_selected)
+	movement_selector.init()
+	attack_selector.init()
 	
-func register_grass(grass: Node):
-	grass.grass_selected.connect(_on_hex_grass_selected)
-
-func _on_unit_selected(unit: Node):
-	print("Выбран юнит:", unit)
-	PathFinder.set_seleted_unit(unit)
-	attack.remove_attack_area()
-	movement.remove_movement_area(movement_area)
-	movement_area = PathFinder.get_movement_area()
-	attack_area = PathFinder.get_attack_area()
-	movement.set_movement_area(movement_area)
-	current_unit = unit
+func _on_movement_unit_selected(_unit_input: Node):
+	var unit = _unit_input.get_parent()
+	EventBus.set_movement_area.emit(unit)
+	EventBus.set_attack_area.emit(unit)
 	
-func _on_hex_grass_selected(grass: Node):
-	movement.move(current_unit, grass, movement_area)
+func _on_movement_grass_selected(_grass_input: Node):
+	var grass = _grass_input.get_parent()
+	EventBus.move.emit(grass)
 	
-func _on_unit_attacked():
-	
+func _on_unit_attacked_selected(unit):
+	EventBus.attack.emit(unit)
