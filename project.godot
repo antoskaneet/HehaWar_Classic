@@ -21,6 +21,7 @@ UnitSelector="*res://core/autoload/UnitSelector.gd"
 GridRegistry="*res://core/autoload/GridRegistry.gd"
 PathFinder="*res://core/autoload/PathFinder.gd"
 EventBus="*res://core/autoload/EventBus.gd"
+UnitColorManager="*res://core/autoload/UnitColorManager.gd"
 
 [rendering]
 

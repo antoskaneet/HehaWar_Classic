@@ -17,5 +17,4 @@ tile_map_data = PackedByteArray("AAD6//z/AAAAAAAABAD6//3/AAAAAAAABAD6//7/AAAAAAA
 tile_set = ExtResource("2_w20ko")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD/////AAAAAAAAAQD//wAAAAAAAAAAAQD//wEAAAAAAAAAAQAAAP//AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAQABAP//AAAAAAAAAQABAAAAAAAAAAAAAQABAAEAAAAAAAAAAQA=")
 tile_set = ExtResource("2_w20ko")

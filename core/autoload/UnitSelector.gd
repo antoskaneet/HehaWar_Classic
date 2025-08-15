@@ -1,6 +1,5 @@
 extends Node
 
-var current_unit: Node
 var movement_selector = MovementSelector.new()
 var attack_selector = AttackSelector.new()
 

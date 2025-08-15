@@ -1,19 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkem22jg2cit2"]
+[gd_scene load_steps=10 format=3 uid="uid://bkem22jg2cit2"]
 
 [ext_resource type="Texture2D" uid="uid://ch1fi2fmbjafh" path="res://assets/testhexunit.png" id="1_fqlfb"]
 [ext_resource type="Script" uid="uid://c27pckw52uyqd" path="res://scripts/tiles/units/unit/Unit.gd" id="1_mie17"]
-[ext_resource type="Shader" uid="uid://dknx3gibb0okt" path="res://assets/shader/UnitColor.gdshader" id="2_kmf6m"]
 [ext_resource type="Script" uid="uid://bpppd3otklih3" path="res://scripts/tiles/units/unit/UnitInput.gd" id="2_mie17"]
-[ext_resource type="Script" uid="uid://dgwpc4f2pxise" path="res://scripts/tiles/units/unit/Sprite2D.gd" id="4_ds6wr"]
 [ext_resource type="Script" uid="uid://btlw16o5wius3" path="res://scripts/tiles/units/unit/MovementTween.gd" id="4_yrmk5"]
 [ext_resource type="Script" uid="uid://1yqw1528n8l7" path="res://scripts/tiles/units/unit/HP.gd" id="5_8n25i"]
 [ext_resource type="Script" uid="uid://dnbghbncsu2op" path="res://scripts/tiles/units/unit/LabelHP.gd" id="5_bsjw1"]
 [ext_resource type="Script" uid="uid://b6k86qdlkjyuc" path="res://scripts/tiles/units/unit/AttackTween.gd" id="5_rdona"]
 [ext_resource type="Script" uid="uid://653rbuf0a646" path="res://scripts/tiles/units/unit/UnitState.gd" id="7_5pin8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds6wr"]
-shader = ExtResource("2_kmf6m")
-shader_parameter/team_color = Vector4(0, 0, 0, 0)
 
 [sub_resource type="SystemFont" id="SystemFont_yrmk5"]
 subpixel_positioning = 0
@@ -22,9 +16,7 @@ subpixel_positioning = 0
 script = ExtResource("1_mie17")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ds6wr")
 texture = ExtResource("1_fqlfb")
-script = ExtResource("4_ds6wr")
 
 [node name="InputUnit" type="Area2D" parent="."]
 script = ExtResource("2_mie17")
