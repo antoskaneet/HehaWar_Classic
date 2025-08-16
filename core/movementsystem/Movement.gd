@@ -13,6 +13,10 @@ func remove_movement_area(grass_mass: Array):
 func move(_unit, target_tile, grass_mass):
 	_unit.get_node("InputUnit").visible = false
 	var path = PathFinder.get_path_move(_unit, target_tile, grass_mass)
+	var move_cost = path.size()
+	TurnManager.spend_unit_action(_unit, move_cost)
+	_unit.data.radius -= move_cost
+	
 	if path.is_empty():
 		return
 	_unit.get_node("MovementTween").move_along_path(path)

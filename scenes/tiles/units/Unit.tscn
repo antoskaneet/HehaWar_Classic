@@ -57,3 +57,4 @@ vertical_alignment = 1
 script = ExtResource("5_bsjw1")
 
 [connection signal="input_event" from="InputUnit" to="InputUnit" method="_on_hex_selected"]
+[connection signal="input_event" from="InputUnit" to="InputUnit" method="_on_unit_attacked"]

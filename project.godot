@@ -22,6 +22,8 @@ GridRegistry="*res://core/autoload/GridRegistry.gd"
 PathFinder="*res://core/autoload/PathFinder.gd"
 EventBus="*res://core/autoload/EventBus.gd"
 UnitColorManager="*res://core/autoload/UnitColorManager.gd"
+InputManager="*res://core/autoload/InputManager.gd"
+TurnManager="*res://core/autoload/TurnManager.gd"
 
 [rendering]
 

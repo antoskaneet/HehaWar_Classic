@@ -55,7 +55,6 @@ func get_units_in_range(max_steps: int) -> Array:
 			visited[neighbor] = cost + 1
 			frontier.append({ "pos": neighbor, "cost": cost + 1 })
 
-			# Проверка — есть ли юнит на этой клетке (и это не стартовый)
 			if neighbor != start:
 				var unit_at_cell = GridRegistry.get_hex(neighbor, "unit")
 				if unit_at_cell != null:
