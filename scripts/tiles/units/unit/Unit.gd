@@ -6,7 +6,6 @@ var data = UnitData.new()
 
 func _ready():
 	add_to_group("unit")
-	unit.get_node("InputUnit").monitoring = false
-	#TeamManager.set_color(self)
+	TeamManager.add_unit_to_team(self)
 	GridRegistry.registry(unit, unit.global_position)
-	InputManager.enable_input(get_node("InputUnit"), "right_click_select")
+	InputManager.disable_input(unit.get_node("InputUnit"), "right_click_select")
