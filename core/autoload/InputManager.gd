@@ -28,9 +28,7 @@ func _unit_input(unit_input, input_type):
 	match input_type:
 		"right_click_select":
 			EventBus.unit_input_selected.emit(unit_input)
-			print("2")
 		"right_click_target":
 			EventBus.unit_input_attacked_selected.emit(unit_input)
-			print("гаварю атакуй")
 		_:
 			pass

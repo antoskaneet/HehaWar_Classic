@@ -27,6 +27,10 @@ TurnManager="*res://core/autoload/TurnManager.gd"
 TeamManager="*res://core/autoload/TeamManager.gd"
 InputKeyboard="*res://core/autoload/InputKeyboard.gd"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

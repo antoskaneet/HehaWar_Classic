@@ -9,7 +9,8 @@ func spend_unit_action(_unit: Node, cost: int):
 		InputManager.disable_input(_unit.get_node("InputUnit"), "right_click_select")
 		
 		# var no_activ_color = UnitColorManager.darken_color_str(_unit.data.color, 0.6)
-		UnitColorManager.set_color(_unit, "#000000")
+		var darken_color_str = UnitColorManager.darken_color(_unit.data.color)
+		UnitColorManager.set_color(_unit, darken_color_str)
 
 func next_team():
 	if TeamManager.teams.is_empty():
