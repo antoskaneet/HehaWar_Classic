@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ss3k0fqffrkj"]
+[gd_scene load_steps=5 format=3 uid="uid://ss3k0fqffrkj"]
 
 [ext_resource type="Script" uid="uid://br7f4wm1cu1bw" path="res://scripts/camera2D/Camera2DInput.gd" id="1_3s3kj"]
+[ext_resource type="Script" uid="uid://bvh0oh6jidbe" path="res://scripts/camera2D/Camera2DRoot.gd" id="1_vwgln"]
 [ext_resource type="Script" uid="uid://e4001q71u422" path="res://scripts/camera2D/Camera2DMoveController.gd" id="3_vsvsb"]
 [ext_resource type="Script" uid="uid://dhu48peo2s4ua" path="res://scripts/camera2D/Camera2DZoomController.gd" id="4_nd2fn"]
 
 [node name="Camera2DRoot" type="Node2D"]
+script = ExtResource("1_vwgln")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

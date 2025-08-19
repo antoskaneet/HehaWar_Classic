@@ -31,6 +31,14 @@ func get_hex(coords: Vector2i, group_name: String) -> Node:
 						return node
 		return null
 
+func get_hex_position(coords_position: Vector2, group_name: String) -> Node:
+	var coords = tilemap_layer.local_to_map(coords_position)
+	if hexs.has(coords):
+		for node in hexs[coords]:
+			if node:
+				if node.is_in_group(group_name):
+					return node
+	return null
 # НЕЭФФЕКТИВЕН: перебирает все ключи и значения словаря,
 # что при большом количестве данных занимает много времени.
 func find_key_by_value(target_node: Node):
