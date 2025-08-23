@@ -11,7 +11,8 @@ func move_along_path(path: Array, duration_per_cell := 0.3):
 	tween.set_ease(Tween.EASE_IN_OUT)
 	
 	for grass_node in path:
-		tween.tween_property(owner, "position", grass_node.position, duration_per_cell)
+		tween.tween_property(owner, "global_position", grass_node.global_position, duration_per_cell)
+
 
 	tween.finished.connect(_on_tween_finished)
 

@@ -19,7 +19,7 @@ func _ready():
 	for i in range(count):
 		var hex = hex_scene.instantiate()
 		hex.position = Vector2(i * spacing, 700)  # y = 400 (снизу)
-		hex.data.color = "#ffff00"
+		hex.data.color = "#f25972"
 		UnitColorManager.set_color(hex)
 		add_child(hex)
 		
