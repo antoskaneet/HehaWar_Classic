@@ -1,14 +1,21 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c0pclgsbrbosu"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://c0pclgsbrbosu"]
 
 [ext_resource type="Texture2D" uid="uid://ccgq0mom23dtt" path="res://assets/bluehex.png" id="1_h4et3"]
+[ext_resource type="PackedScene" uid="uid://dhjuuwr8vd50l" path="res://scenes/ui/main_menu/main_menu_unit2.tscn" id="2_7rbfb"]
+[ext_resource type="PackedScene" uid="uid://cp813gbfn7xnm" path="res://scenes/ui/main_menu/main_menu_unit.tscn" id="3_vqyf5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7rbfb"]
 texture = ExtResource("1_h4et3")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vqyf5"]
+scenes/1/scene = ExtResource("2_7rbfb")
+scenes/4/scene = ExtResource("3_vqyf5")
+
 [resource]
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(272, 272)
 sources/0 = SubResource("TileSetAtlasSource_7rbfb")
+sources/1 = SubResource("TileSetScenesCollectionSource_vqyf5")

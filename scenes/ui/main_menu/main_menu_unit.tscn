@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp813gbfn7xnm"]
+
+[ext_resource type="Texture2D" uid="uid://ba4odbvlyyhpn" path="res://assets/main_menu/main_menu_redhex.png" id="1_iaynd"]
+
+[node name="MainMenuUnit" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iaynd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -127.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 90
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
