@@ -26,6 +26,8 @@ InputManager="*res://core/autoload/InputManager.gd"
 TurnManager="*res://core/autoload/TurnManager.gd"
 TeamManager="*res://core/autoload/TeamManager.gd"
 InputKeyboard="*res://core/autoload/InputKeyboard.gd"
+Network="*res://core/network/Network.gd"
+LobbyData="*res://core/autoload/LobbyData.gd"
 
 [display]
 

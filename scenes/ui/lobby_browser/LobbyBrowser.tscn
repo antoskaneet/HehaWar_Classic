@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpghdivt30ben"]
+
+[ext_resource type="Script" uid="uid://p5i5d7hbtvnd" path="res://scripts/ui/lobby_browser/LobbyBrowserInputButton.gd" id="1_gq047"]
+[ext_resource type="Script" uid="uid://chbhafajxuiv1" path="res://scripts/ui/lobby_browser/LobbyBrowserClient.gd" id="1_iobvw"]
+[ext_resource type="Texture2D" uid="uid://cj1oy67lpl325" path="res://assets/bg.png" id="1_jo0o3"]
+[ext_resource type="PackedScene" uid="uid://dgy1v4slevvx6" path="res://scenes/ui/lobby_browser/ServerCreatePopup.tscn" id="2_7voob"]
+[ext_resource type="Texture2D" uid="uid://c3dpxi40fi5hs" path="res://assets/main_menu/main_menu_button.png" id="2_244rn"]
+[ext_resource type="FontFile" uid="uid://co1wjksp7j77j" path="res://assets/main_menu/Tiny5-Regular.ttf" id="2_ph5wu"]
+[ext_resource type="Texture2D" uid="uid://347iadpw6cnb" path="res://assets/main_menu/main_menu_button_active.png" id="5_b0qrt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo0o3"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[node name="LobbyBrowser" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LobbyBrowserClient" type="Node" parent="."]
+script = ExtResource("1_iobvw")
+
+[node name="LobbyBrowserInputButton" type="Node" parent="."]
+script = ExtResource("1_gq047")
+server_create_popup = ExtResource("2_7voob")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 3840.0
+offset_bottom = 2160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jo0o3")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_ph5wu")
+theme_override_font_sizes/font_size = 128
+text = "Server Browser"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LobbyPanel" type="Panel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jo0o3")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/LobbyPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/LobbyPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Back" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2"]
+z_index = 1
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture_normal = ExtResource("2_244rn")
+texture_pressed = ExtResource("5_b0qrt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ph5wu")
+theme_override_font_sizes/font_size = 90
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 9
+theme_override_constants/separation = 64
+
+[node name="Create" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+z_index = 1
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture_normal = ExtResource("2_244rn")
+texture_pressed = ExtResource("5_b0qrt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4/Create"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ph5wu")
+theme_override_font_sizes/font_size = 90
+text = "Create"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Join" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4"]
+z_index = 1
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture_normal = ExtResource("2_244rn")
+texture_pressed = ExtResource("5_b0qrt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4/Join"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ph5wu")
+theme_override_font_sizes/font_size = 90
+text = "Join"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer2/Back" to="LobbyBrowserInputButton" method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4/Create" to="LobbyBrowserInputButton" method="_on_create_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/HBoxContainer4/Join" to="LobbyBrowserInputButton" method="_on_join_pressed"]
