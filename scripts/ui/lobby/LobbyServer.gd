@@ -1,48 +1,32 @@
 extends Node
 
-var tcp_server : TCPServer
-var udp : UDPServer
-var peers := []
+var udp_peer: PacketPeerUDP
+var server_info
 
-func _ready() -> void:
-	print("host_is = ", LobbyData.is_host)
-	print("password = ", LobbyData.password)
-	print("server_name = ", LobbyData.server_name)
-
-	if LobbyData.is_host == true:
-		# Создаём TCP сервер
-		tcp_server = TCPServer.new()
-		var err = tcp_server.listen(54321)
-		if err != OK:
-			print("Ошибка запуска TCP сервера:", err)
+func _ready():
+	if LobbyData.is_host:
+		server_info = {
+			"server_name": LobbyData.server_name,
+			"password": LobbyData.password,
+			"lobby_path": "res://scenes/ui/lobby_browser/ServerListItem.tscn",
+			"discover": false,
+		}
 		
-		# Создаём UDP сервер для broadcast
-		udp = UDPServer.new()
-		udp.listen(12345)
-		
-		# Однократный broadcast IP хоста
-		test_udp_all()
-
-
-func test_udp_all():
-	var host_ip = IP.get_local_addresses()[0]
-	var msg = host_ip.to_utf8_buffer()
-	udp.set_dest_address("255.255.255.255", 12345)
-	udp.put_packet(msg)
-	print("UDP broadcast отправлен:", host_ip)
-
+		udp_peer = PacketPeerUDP.new()
+		udp_peer.bind(12344)
+		udp_peer.set_broadcast_enabled(true)
+		print("Сервер готов, слушаем")
 
 func _process(delta):
-	if udp:
-		udp.poll()
-		while udp.is_connection_available():
-			var peer = udp.take_connection()
-			var packet = peer.get_packet()
-			var client_ip = packet.get_string_from_utf8()
-			print("Получен пакет от:", client_ip)
-	
-	if tcp_server:
-		if tcp_server.is_connection_available():
-			var client = tcp_server.take_connection() as StreamPeerTCP
-			peers.append(client)
-			print("TCP клиент подключился!")
+	while udp_peer.get_available_packet_count() > 0:
+		var pkt = udp_peer.get_packet().get_string_from_utf8()
+		var client_ip = udp_peer.get_packet_ip()
+		var client_port = udp_peer.get_packet_port()
+
+		print("Получен DISCOVER от %s:%d -> %s" % [client_ip, client_port, pkt])
+
+		if pkt == "DISCOVER":
+			var json = JSON.stringify(server_info)
+			udp_peer.set_dest_address(client_ip, client_port) # отправляем туда, откуда пришёл запрос
+			udp_peer.put_packet(json.to_utf8_buffer())
+			print("Отправили JSON клиенту -> ", client_ip, ":", client_port)
