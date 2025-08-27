@@ -40,10 +40,23 @@ func add_server_to_list(server_info: Dictionary):
 	if path == "":
 		return
 	
+	var server_name = server_info.get("server_name", "Unknown")
 	var scene_res = load(path)
 	if not scene_res:
 		return
 
 	var server_item = scene_res.instantiate()
 
-	get_parent().get_node("MarginContainer/VBoxContainer/VBoxContainer/LobbyPanel/ScrollContainer/VBoxContainer").add_child(server_item)
+	var list_parent = get_parent().get_node("MarginContainer/VBoxContainer/VBoxContainer/LobbyPanel/ScrollContainer/VBoxContainer")
+	list_parent.add_child(server_item)
+	server_item.set_data(server_name)
+	
+	LobbyData.ip = server_info.get("ip")
+	print(LobbyData.ip)
+	
+	
+# ПРИМЕР ПАКЕТА
+#"server_name": LobbyData.server_name,
+#"password": LobbyData.password,
+#"lobby_path": "res://scenes/ui/lobby_browser/ServerListItem.tscn",
+#"discover": false,

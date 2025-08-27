@@ -82,16 +82,19 @@ func _on_player_disconnected(id):
 
 
 func _on_connected_ok():
+	print("Подключение к серверу успешно!")
 	var peer_id = multiplayer.get_unique_id()
 	players[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
 
 
 func _on_connected_fail():
+	print("Не удалось подключиться к серверу")
 	multiplayer.multiplayer_peer = null
 
 
 func _on_server_disconnected():
+	print("Сервер отключился")
 	multiplayer.multiplayer_peer = null
 	players.clear()
 	server_disconnected.emit()
