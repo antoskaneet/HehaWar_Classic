@@ -12,7 +12,7 @@ func registry(node: Node, coords: Vector2i):
 	if !hexs.has(_local_coords):
 		hexs[_local_coords] = []
 	if node not in hexs[_local_coords]:
-		print("Регистрируем:", node, "в координаты:", _local_coords)
+		#print("Регистрируем:", node, "в координаты:", _local_coords)
 		hexs[_local_coords].append(node)
 
 func unregistry(node: Node, coords: Vector2i) -> void:

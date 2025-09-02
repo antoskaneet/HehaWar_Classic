@@ -2,7 +2,9 @@ extends Node
 
 var tween: Tween
 
+
 func move_along_path(path: Array, duration_per_cell := 0.3):
+	
 	if tween:
 		tween.kill()
 	
@@ -20,4 +22,5 @@ func move_along_path(path: Array, duration_per_cell := 0.3):
 func _on_tween_finished():
 	print(TeamManager.get_team("#ff0000"))
 	get_parent().get_node("InputUnit").visible = true
+	get_parent().call_rpc_remote_set_position()
 	#get_parent().get_node("Sprite2D").modulate = Color.html("#3366FF")

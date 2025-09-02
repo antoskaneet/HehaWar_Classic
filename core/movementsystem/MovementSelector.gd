@@ -21,7 +21,7 @@ func _on_movement_selected(unit):
 func _move_unit_to_tile(_grass):
 	EventBus.clear_attack_area.emit()
 	movement.move(_unit, _grass, _movement_area)
-	
+
 func _clear_movement_area():
 	movement.remove_movement_area(_movement_area)
 	_movement_area.clear()

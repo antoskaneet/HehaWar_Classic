@@ -11,11 +11,10 @@ const MAX_CONNECTIONS = 20
 
 var players = {}
 
-var player_info = {"name": "Name"}
+var player_info = {"name": "Name", "team": ""}
 
+var init_peers_unit_flag: bool = false
 var players_loaded = 0
-
-
 
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
@@ -67,7 +66,6 @@ func player_loaded():
 
 func _on_player_connected(id):
 	_register_player.rpc_id(id, player_info)
-
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):

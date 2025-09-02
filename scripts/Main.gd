@@ -3,7 +3,6 @@ extends Node2D
 @export var hex_scene: PackedScene
 
 func _ready():
-	
 	var spacing = 120
 	var count = 5
 	
@@ -38,5 +37,3 @@ func _ready():
 		hex.data.color = "#0000ff"
 		UnitColorManager.set_color(hex)
 		add_child(hex)
-		
-	TurnManager.next_team()

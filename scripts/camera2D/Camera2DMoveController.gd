@@ -21,9 +21,11 @@ func ClickAndDrag():
 
 	var unit_under_mouse = GridRegistry.get_hex_position(mouse_tile, "unit")
 	
-	var current_color = TurnManager.team_keys[TurnManager.current_team_index]
+	var current_color = null
+	if TurnManager.team_keys.size() > 0 and TurnManager.current_team_index >= 0:
+		current_color = TurnManager.team_keys[TurnManager.current_team_index]
 
-	if not unit_under_mouse or (unit_under_mouse.data.color != current_color):
+	if not unit_under_mouse or (current_color and unit_under_mouse.data.color != current_color):
 		if not isDragging and Input.is_action_pressed("camera_pan"):
 			dragStartMousePos = get_viewport().get_mouse_position()
 			dragStartCameraPos = camera2d.position
