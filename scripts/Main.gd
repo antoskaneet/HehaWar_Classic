@@ -22,18 +22,18 @@ func _ready():
 		UnitColorManager.set_color(hex)
 		add_child(hex)
 		
-	# Левый ряд (красные) — вертикально
-	for i in range(count):
-		var hex = hex_scene.instantiate()
-		hex.position = Vector2(0, i * spacing)
-		hex.data.color = "#ff0000"
-		UnitColorManager.set_color(hex)
-		add_child(hex)
+	## Левый ряд (красные) — вертикально
+	#for i in range(count):
+		#var hex = hex_scene.instantiate()
+		#hex.position = Vector2(0, i * spacing)
+		#hex.data.color = "#ff0000"
+		#UnitColorManager.set_color(hex)
+		#add_child(hex)
 		
-	# Правый ряд (синие) — вертикально
-	for i in range(count):
-		var hex = hex_scene.instantiate()
-		hex.position = Vector2(400, i * spacing)
-		hex.data.color = "#0000ff"
-		UnitColorManager.set_color(hex)
-		add_child(hex)
+	## Правый ряд (синие) — вертикально
+	#for i in range(count):
+		#var hex = hex_scene.instantiate()
+		#hex.position = Vector2(400, i * spacing)
+		#hex.data.color = "#0000ff"
+		#UnitColorManager.set_color(hex)
+		#add_child(hex)

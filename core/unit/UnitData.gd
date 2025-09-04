@@ -10,3 +10,4 @@ var color: String = "#FF0000"
 var action_points: int = 3
 var max_action_points: int = 3
 var peer_id: int
+var network_id: int

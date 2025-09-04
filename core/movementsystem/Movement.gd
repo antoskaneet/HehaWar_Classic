@@ -21,6 +21,12 @@ func move(_unit, target_tile, grass_mass):
 		return
 	_unit.get_node("MovementTween").move_along_path(path)
 	
+	print("ето надо найти: ", _unit.data.network_id)
+	# Локально снимаем и ставим юнит
 	GridRegistry.unregistry(_unit, _unit.position)
 	remove_movement_area(grass_mass)
 	GridRegistry.registry(_unit, target_tile.position)
+
+	# Отправляем RPC для синхронизации с другими
+	GridRegistry.unregistry_rpc.rpc(_unit.data.network_id)
+	GridRegistry.registry_rpc.rpc(_unit.data.network_id, target_tile.position)

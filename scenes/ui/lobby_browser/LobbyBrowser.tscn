@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpghdivt30ben"]
+[gd_scene load_steps=9 format=3 uid="uid://dpghdivt30ben"]
 
 [ext_resource type="Script" uid="uid://p5i5d7hbtvnd" path="res://scripts/ui/lobby_browser/LobbyBrowserInputButton.gd" id="1_gq047"]
 [ext_resource type="Script" uid="uid://chbhafajxuiv1" path="res://scripts/ui/lobby_browser/LobbyBrowserClient.gd" id="1_iobvw"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c3dpxi40fi5hs" path="res://assets/main_menu/main_menu_button.png" id="2_244rn"]
 [ext_resource type="FontFile" uid="uid://co1wjksp7j77j" path="res://assets/main_menu/Tiny5-Regular.ttf" id="2_ph5wu"]
 [ext_resource type="Texture2D" uid="uid://347iadpw6cnb" path="res://assets/main_menu/main_menu_button_active.png" id="5_b0qrt"]
-[ext_resource type="PackedScene" uid="uid://dbgtiypk6eimf" path="res://scenes/ui/lobby_browser/ServerListItem.tscn" id="6_rf6x8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo0o3"]
 bg_color = Color(0.203922, 0.203922, 0.203922, 1)
@@ -91,9 +90,6 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="ServerListItem" parent="MarginContainer/VBoxContainer/VBoxContainer/LobbyPanel/ScrollContainer/VBoxContainer" instance=ExtResource("6_rf6x8")]
-layout_mode = 2
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

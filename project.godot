@@ -28,6 +28,7 @@ TeamManager="*res://core/autoload/TeamManager.gd"
 InputKeyboard="*res://core/autoload/InputKeyboard.gd"
 Network="*res://core/network/Network.gd"
 LobbyData="*res://core/autoload/LobbyData.gd"
+NetworkID="*res://core/autoload/NetworkID.gd"
 
 [display]
 

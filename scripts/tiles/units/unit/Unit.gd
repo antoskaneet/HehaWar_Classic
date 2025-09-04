@@ -11,6 +11,34 @@ func _ready():
 	InputManager.disable_input(self.get_node("InputUnit"), "right_click_select")
 	target_position = self.global_position
 	set_process(false)
+	_ready_network_server()
+
+	
+	
+
+func _ready_network_server():
+	if multiplayer.is_server():
+		print("Инициализация сети сервера юнита")
+		var _network_id = NetworkID.get_unique_id()
+
+
+		self.data.network_id = _network_id
+		GridRegistry.registry_network_id(self, _network_id)
+
+		_receive_id.rpc_id(0, _network_id)
+
+#func _send_id_rpc():
+	#if multiplayer.is_server():
+		#print("сервер отправил рпс")
+		#var _network_id = NetworkID.get_unique_id()
+		#_receive_id.rpc(_network_id)
+
+@rpc("any_peer", "reliable")
+func _receive_id(id: int):
+	if !multiplayer.is_server():
+		print("Получил ID от сервера:", id)
+		self.data.network_id = id
+		GridRegistry.registry_network_id(self, id)
 
 @rpc("any_peer", "reliable")
 func remote_set_position(authority_position):

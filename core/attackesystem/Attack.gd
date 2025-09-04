@@ -22,7 +22,7 @@ func attack(start_unit, _unit):
 	EventBus.clear_movement_area.emit()
 	TurnManager.spend_unit_action(
 		start_unit,
-		 start_unit.data.max_action_points
+		start_unit.data.max_action_points
 		)
 
 	var tween_node = _unit.get_parent().get_node("AttackTween")
@@ -30,4 +30,4 @@ func attack(start_unit, _unit):
 
 	tween_node.tween.finished.connect(func():
 		var dmg = calculate_damage(start_unit)
-		_unit.get_parent().get_node("UnitHP").take_damage(dmg))
+		_unit.get_parent().get_node("UnitHP").take_damage.rpc(dmg))
